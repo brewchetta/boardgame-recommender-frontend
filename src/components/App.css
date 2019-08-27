@@ -1,15 +1,38 @@
 .App {
   text-align: center;
-  padding: 10em;
+  font-family: 'Acme', sans-serif;
+}
+
+input {
+  border: solid black 1px;
 }
 
 #find-games-header {
   position: fixed;
   width: 100%;
-  top: 0;
+  top: 30px;
   left: 0;
   border: solid black 2px;
   background: black;
   color: white;
   padding-bottom: 1em;
+}
+
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  color: white;
+  background: black;
+  text-align: left;
+  border: solid white 0;
+  border-bottom-width: 2px;
+}
+
+#navbar h2 {
+  cursor: pointer;
+  margin: 1px;
+  display: inline-block;
 }

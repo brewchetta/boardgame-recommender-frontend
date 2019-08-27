@@ -1,11 +1,57 @@
 .board-game-card {
   border: solid black 2px;
-  max-height: 10em;
-  overflow-y: auto;
+  overflow: hidden;
+  position: relative;
+  background: #fffe;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.2s;
+  max-width: 30em;
+}
+
+.board-game-card:hover {
+  background: #fffc;
+}
+
+.board-game-card * {
+  margin: 0.2em;
+  padding: 0;
+}
+
+.board-game-card-background {
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: -5%;
+  left: -5%;
+  width: 110%;
+  height: 110%;
+  z-index: -1;
 }
 
 #board-game-collection {
+  padding: 1em;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 5em;
+  grid-gap: 1em;
+}
+
+.stars-container {
+  position: relative;
+}
+
+.stars-underlay {
+  display: inline-block;
+  font-size: 1.5em;
+  color: #ccc;
+}
+
+.stars-overlay {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -2.5em;
+  font-size: 1.5em;
+  color: #2da;
+  overflow-x: hidden;
 }

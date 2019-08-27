@@ -1,3 +1,27 @@
-#find-game-form {
+#find-games-header {
+  z-index: 1;
+}
 
+input {
+  margin: 0.5em;
+}
+
+#find-game-form {
+  background-color: #2da;
+  width: 40em;
+  margin: auto;
+  border-radius: 5px;
+  border: solid black 2px;
+  margin-top: 11em;
+}
+
+.find-games-recommendation {
+  cursor: pointer;
+  border: dotted white 2px;
+  background: none;
+  color: #fff;
+  margin: 1em;
+  border-radius: 3px;
+  padding: 0.5em;
+  font-size: 1em;
 }

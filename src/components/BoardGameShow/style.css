@@ -1,0 +1,23 @@
+.board-game-show {
+  margin-top: 1.5em;
+  background-color: #fffe;
+  border-bottom: solid black 3px;
+}
+
+.board-game-show p {
+  padding: 0 5em 0 5em;
+}
+
+#boardgame-show-image-container {
+  width: 100%;
+  height: 15em;
+  border: solid black;
+  border-width: 2px 0 2px 0;
+  overflow: hidden;
+}
+
+#boardgame-show-image {
+  position: relative;
+  width: 110%;
+  top: -100%;
+}

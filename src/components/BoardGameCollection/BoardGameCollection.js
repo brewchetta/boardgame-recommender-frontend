@@ -2,10 +2,10 @@ import React from 'react'
 import BoardgameCard from './BoardgameCard'
 import './style.css'
 
-const BoardGameCollection = ({boardgames}) => {
+const BoardGameCollection = ({boardgames, setCurrentBoardgame}) => {
 
   const renderBoardGames = () => {
-    return boardgames.map(boardgame => <BoardgameCard key={boardgame.name} {...{boardgame}} />)
+    return boardgames.map(boardgame => <BoardgameCard key={boardgame.name} {...{boardgame, setCurrentBoardgame}} />)
   }
 
   return (
