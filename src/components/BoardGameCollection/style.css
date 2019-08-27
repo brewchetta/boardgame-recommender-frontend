@@ -1,0 +1,11 @@
+.board-game-card {
+  border: solid black 2px;
+  max-height: 10em;
+  overflow-y: auto;
+}
+
+#board-game-collection {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 5em;
+}

@@ -1,5 +1,6 @@
 import React from 'react'
 import BoardgameCard from './BoardgameCard'
+import './style.css'
 
 const BoardGameCollection = ({boardgames}) => {
 
@@ -8,7 +9,7 @@ const BoardGameCollection = ({boardgames}) => {
   }
 
   return (
-    <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)'}}>
+    <div id='board-game-collection'>
       {renderBoardGames()}
     </div>
   )

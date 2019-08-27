@@ -1,15 +1,23 @@
 import React from 'react'
 
 const BoardgameCard = ({boardgame}) => {
+
+  const renderDescription = description => {
+    return description
+    .replace(/&#10;/gi, '\n')
+    .replace(/&quot;/gi, `"`)
+    .replace(/&ndash;/gi, '-')
+  }
+
   return (
-    <div>
-      <img style={{width: '100px', height: '100px'}} src={boardgame.img ? boardgame.img : 'https://s3.amazonaws.com/walrus-assets/img/BoardGameTheory.jpg'} alt='' />
+    <div className='board-game-card'>
+      <img style={{width: '100px', height: '100px'}} src={boardgame.image ? boardgame.image : 'https://s3.amazonaws.com/walrus-assets/img/BoardGameTheory.jpg'} alt='' />
 
       <h3>{boardgame.name}</h3>
 
       <p>average rating: {boardgame.avgrating.toFixed(1)} | ratings: {boardgame.ratingscount}</p>
 
-      <p>{boardgame.description}</p>
+      <p>{renderDescription(boardgame.description)}</p>
 
       <p>Designer: {boardgame.designer}</p>
 
@@ -21,7 +29,7 @@ const BoardgameCard = ({boardgame}) => {
 
       <p>Players: {boardgame.minplayers}-{boardgame.maxplayers} | Best with {parseInt(boardgame.best)}</p>
 
-      <p>Playtime {boardgame.minplaytime}-{boardgame.maxplaytime} minutes</p>
+      <p>Playtime {boardgame.minplaytime} minutes</p>
 
       <p>Age {boardgame.minage} and up</p>
 

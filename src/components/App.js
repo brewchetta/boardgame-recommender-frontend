@@ -1,6 +1,11 @@
+// React
 import React, {useState} from 'react';
-import FindGameForm from './FindGameForm/FindGameForm'
+//Router
+import {BrowserRouter as Router, Route} from 'react-router-dom'
+// Components
+import FindGamesHeader from './FindGameForm/FindGamesHeader'
 import BoardGameCollection from './BoardGameCollection/BoardGameCollection'
+// Style
 import './App.css';
 
 function App() {
@@ -12,11 +17,7 @@ function App() {
   return (
     <div className="App">
 
-      <h1>Welcome to Board Game Recommender!</h1>
-
-      <p>Type in three game titles and we'll find something fun for you to play!</p>
-
-      <FindGameForm {...{setBoardgames}} />
+      <FindGamesHeader {...{setBoardgames}} />
 
       <BoardGameCollection {...{boardgames}} />
 

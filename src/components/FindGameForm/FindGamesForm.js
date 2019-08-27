@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
+import './style.css'
 
-const FindGameForm = ({setBoardgames}) => {
+const FindGamesForm = ({setBoardgames}) => {
   const [input, setInput] = useState({inputOne: '', inputTwo: '', inputThree: ''})
 
   const url = `http://localhost:3000/boardgames?q=${input.inputOne}`
@@ -28,13 +29,17 @@ const FindGameForm = ({setBoardgames}) => {
   // Autosuggests games similar to google lending search results
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type='text' name='inputOne' value={input.inputOne} onChange={handleChange} />
-      <input type='text' name='inputTwo' value={input.inputTwo} onChange={handleChange} />
-      <input type='text' name='inputThree' value={input.inputThree} onChange={handleChange} />
-      <input type='submit' value='Submit' />
-    </form>
+    <div id='find-game-form'>
+
+      <form onSubmit={handleSubmit}>
+        <input type='text' name='inputOne' value={input.inputOne} onChange={handleChange} />
+        <input type='text' name='inputTwo' value={input.inputTwo} onChange={handleChange} />
+        <input type='text' name='inputThree' value={input.inputThree} onChange={handleChange} />
+        <input type='submit' value='Submit' />
+      </form>
+
+    </div>
   )
 }
 
-export default FindGameForm
+export default FindGamesForm
