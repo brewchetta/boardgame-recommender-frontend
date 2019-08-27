@@ -7,6 +7,7 @@ const FindGamesForm = ({setBoardgames}) => {
   const [currentField, setCurrentField] = useState('')
 
   const url = `http://localhost:3000/boardgames?q=${input.inputOne}`
+  // const url = '/rec'
 
   const setCurrentInput = (newInput) => {
     setInput({...input, [`input${currentField}`]: newInput})
@@ -14,9 +15,16 @@ const FindGamesForm = ({setBoardgames}) => {
   }
 
   const fetchBoardGames = () => {
-    fetch(url)
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type':'application/json',
+        'Accept':'application/json'
+      },
+      body: JSON.stringify([input.inputOne, input.inputTwo, input.inputThree])
+    })
     .then(res => res.json())
-    .then(games => setBoardgames(games))
+    .then(console.log)
   }
 
   const handleChange = event => {
