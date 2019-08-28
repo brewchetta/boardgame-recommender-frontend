@@ -16,11 +16,14 @@ const FindGamesForm = ({setBoardgames}) => {
   }
 
   const fetchBoardGames = () => {
+    console.log(url)
     fetch(url, {
       method: 'POST'
     })
     .then(res =>res.json())
-    .then(res => setBoardgames(res.games))
+    .then(res => {
+      setBoardgames(res.games)
+    })
   }
 
   const handleChange = event => {
