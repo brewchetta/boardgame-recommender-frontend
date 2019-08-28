@@ -24,13 +24,20 @@ input:focus {
   margin-top: 11em;
 }
 
-.find-games-recommendation {
+.recommendation {
   cursor: pointer;
   border: dotted black 2px;
-  background: none;
   color: #000;
   margin: 1em;
   border-radius: 3px;
   padding: 0.5em;
   font-size: 1em;
+}
+
+.find-game {
+  background: #C6B95C;
+}
+
+.find-category {
+  background: #CE8272;
 }

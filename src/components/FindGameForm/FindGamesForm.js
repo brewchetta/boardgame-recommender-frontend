@@ -5,13 +5,15 @@ import './style.css'
 
 const FindGamesForm = ({setBoardgames}) => {
   const [input, setInput] = useState({inputOne: '', inputTwo: '', inputThree: ''})
+  const [inputIsGame, setInputIsGame] = useState({inputOne: true, inputTwo: true, inputThree: true})
   const [currentField, setCurrentField] = useState('')
 
   // const url = `http://localhost:3000/boardgames?q=${input.inputOne}`
   const url = `${dbEndpoint}?games=${input.inputOne},${input.inputTwo},${input.inputThree}`
 
-  const setCurrentInput = (newInput) => {
+  const setCurrentInput = (newInput, isGame) => {
     setInput({...input, [`input${currentField}`]: newInput})
+    setInputIsGame({...inputIsGame, [`input${currentField}`]: isGame})
     setCurrentField('')
   }
 
@@ -62,6 +64,8 @@ const FindGamesForm = ({setBoardgames}) => {
           onFocus={() => setCurrentField('Three')}/>
         <input type='submit' value='Submit' />
       </form>
+
+      <p>{inputIsGame.inputOne ? "0" : "1"}{inputIsGame.inputTwo ? "0" : "1"}{inputIsGame.inputThree ? "0" : "1"}</p>
 
       <FindGamesRecommend input={input[`input${currentField}`]} setCurrentInput={setCurrentInput}/>
 

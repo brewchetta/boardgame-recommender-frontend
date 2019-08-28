@@ -40,10 +40,13 @@ const FindGamesRecommend = ({input, setCurrentInput}) => {
         lowN.startsWith(input.toLowerCase()) || checkForMatchingWords(parsedN)
       )})
     .map(n => (
-      <button className={classname}
+      <button className={`recommendation ${classname}`}
       key={n}
-      onClick={() => setCurrentInput(n)}
-      >{n}</button>
+      onClick={() => {
+        const isGame = classname === 'find-game'
+        setCurrentInput(n, isGame)
+      }}
+      >{array === categories ? 'Category: ': null}{n}</button>
     ))
     .slice(0, numberReturned)
   }
@@ -52,8 +55,8 @@ const FindGamesRecommend = ({input, setCurrentInput}) => {
     <div>
       {input ?
         <>
-        {renderFilteredArray(boardgameNames, 10, 'find-games-recommendation')}
-        {renderFilteredArray(categories, 5, 'find-categories-recommendation')}
+        {renderFilteredArray(boardgameNames, 10, 'find-game')}
+        {renderFilteredArray(categories, 5, 'find-category')}
         </>
         : null}
     </div>
