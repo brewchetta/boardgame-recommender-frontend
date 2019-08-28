@@ -10,9 +10,18 @@ const FindGamesRecommend = ({input, setCurrentInput}) => {
     .then(setBoardgameNames)
   },[])
 
+  const checkForMatchingWords = (array) => {
+    return array.reduce((acc, word) => {
+      if (acc) return true
+      return word.startsWith(input.toLowerCase())
+    }, false)
+  }
+
   const renderFilteredBoardgameNames = () => {
     return boardgameNames
-    .filter(n => n.toLowerCase().includes(input.toLowerCase()) && n.toLowerCase() !== input.toLowerCase())
+    .filter(n => {
+      const parsedN = n.toLowerCase().split(' ')
+      return checkForMatchingWords(parsedN) && n.toLowerCase() !== input.toLowerCase()})
     .map(n => (
       <button className='find-games-recommendation'
       key={n}
