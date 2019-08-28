@@ -3,12 +3,25 @@ import {localEndpoint} from '../../constants'
 
 const FindGamesRecommend = ({input, setCurrentInput}) => {
 
-  const [boardgameNames, setBoardgameNames] = useState([])
+  /* State */
 
+  const [boardgameNames, setBoardgameNames] = useState([])
+  const [categories, setCategories] = useState([])
+
+  /* Utilities */
+
+  // Fetch game names
   useEffect(() => {
     fetch(`${localEndpoint}/names`)
     .then(res => res.json())
     .then(setBoardgameNames)
+  },[])
+
+  // Fetch categories
+  useEffect(() => {
+    fetch(`${localEndpoint}/categories`)
+    .then(res => res.json())
+    .then(setCategories)
   },[])
 
   const checkForMatchingWords = (array) => {
@@ -18,8 +31,8 @@ const FindGamesRecommend = ({input, setCurrentInput}) => {
     }, false)
   }
 
-  const renderFilteredBoardgameNames = () => {
-    return boardgameNames
+  const renderFilteredArray = (array, numberReturned, classname) => {
+    return array
     .filter(n => {
       const lowN = n.toLowerCase()
       const parsedN = lowN.split(' ')
@@ -27,17 +40,22 @@ const FindGamesRecommend = ({input, setCurrentInput}) => {
         lowN.startsWith(input.toLowerCase()) || checkForMatchingWords(parsedN)
       )})
     .map(n => (
-      <button className='find-games-recommendation'
+      <button className={classname}
       key={n}
       onClick={() => setCurrentInput(n)}
       >{n}</button>
     ))
-    .slice(0, 10)
+    .slice(0, numberReturned)
   }
 
   return (
     <div>
-      {input ? renderFilteredBoardgameNames() : null}
+      {input ?
+        <>
+        {renderFilteredArray(boardgameNames, 10, 'find-games-recommendation')}
+        {renderFilteredArray(categories, 5, 'find-categories-recommendation')}
+        </>
+        : null}
     </div>
   )
 }
