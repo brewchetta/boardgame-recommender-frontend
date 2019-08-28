@@ -1,7 +1,7 @@
 // Literally just the name being used by the app in case it should change
 export const appName = 'Board Game Recommender'
 // Endpoint going to flask backend
-export const dbEndpoint = 'https://c3541704.ngrok.io/rec'
+export const dbEndpoint = 'https://9476c217.ngrok.io/rec'
 // Endpoint for names db
 export const localEndpoint = 'http://localhost:3050'
 // Rice paddies and industry background
