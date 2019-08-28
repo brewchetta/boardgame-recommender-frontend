@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import FindGamesRecommend from './FindGamesRecommend'
+import {dbEndpoint} from '../../constants'
 import './style.css'
 
 const FindGamesForm = ({setBoardgames}) => {
@@ -7,7 +8,7 @@ const FindGamesForm = ({setBoardgames}) => {
   const [currentField, setCurrentField] = useState('')
 
   // const url = `http://localhost:3000/boardgames?q=${input.inputOne}`
-  const url = `https://817b2b7e.ngrok.io/rec?games=${input.inputOne},${input.inputTwo},${input.inputThree}`
+  const url = `${dbEndpoint}?games=${input.inputOne},${input.inputTwo},${input.inputThree}`
 
   const setCurrentInput = (newInput) => {
     setInput({...input, [`input${currentField}`]: newInput})

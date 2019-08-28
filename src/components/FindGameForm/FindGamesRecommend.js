@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react'
+import {localEndpoint} from '../../constants'
 
 const FindGamesRecommend = ({input, setCurrentInput}) => {
 
   const [boardgameNames, setBoardgameNames] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:3050/names')
+    fetch(`${localEndpoint}/names`)
     .then(res => res.json())
     .then(setBoardgameNames)
   },[])

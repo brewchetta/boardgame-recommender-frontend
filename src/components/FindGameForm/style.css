@@ -4,10 +4,19 @@
 
 input {
   margin: 0.5em;
+  /* height: 2em; */
+  font-size: 0.9em;
+  border-radius: 5px;
+  background: #fff;
+  padding: 2px;
+}
+
+input:focus {
+  background: #ffe;
 }
 
 #find-game-form {
-  background-color: #2da;
+  background-color: #beb;
   width: 40em;
   margin: auto;
   border-radius: 5px;
@@ -17,9 +26,9 @@ input {
 
 .find-games-recommendation {
   cursor: pointer;
-  border: dotted white 2px;
+  border: dotted black 2px;
   background: none;
-  color: #fff;
+  color: #000;
   margin: 1em;
   border-radius: 3px;
   padding: 0.5em;
