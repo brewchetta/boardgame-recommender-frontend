@@ -6,8 +6,8 @@ const FindGamesForm = ({setBoardgames}) => {
   const [input, setInput] = useState({inputOne: '', inputTwo: '', inputThree: ''})
   const [currentField, setCurrentField] = useState('')
 
-  const url = `http://localhost:3000/boardgames?q=${input.inputOne}`
-  // const url = '/rec'
+  // const url = `http://localhost:3000/boardgames?q=${input.inputOne}`
+  const url = `https://817b2b7e.ngrok.io/rec?games=${input.inputOne},${input.inputTwo},${input.inputThree}`
 
   const setCurrentInput = (newInput) => {
     setInput({...input, [`input${currentField}`]: newInput})
@@ -16,15 +16,10 @@ const FindGamesForm = ({setBoardgames}) => {
 
   const fetchBoardGames = () => {
     fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type':'application/json',
-        'Accept':'application/json'
-      },
-      body: JSON.stringify([input.inputOne, input.inputTwo, input.inputThree])
+      method: 'POST'
     })
-    .then(res => res.json())
-    .then(console.log)
+    .then(res =>res.json())
+    .then(res => setBoardgames(res.games))
   }
 
   const handleChange = event => {

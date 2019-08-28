@@ -5,7 +5,7 @@ const FindGamesRecommend = ({input, setCurrentInput}) => {
   const [boardgameNames, setBoardgameNames] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:3000/names')
+    fetch('http://localhost:3050/names')
     .then(res => res.json())
     .then(setBoardgameNames)
   },[])
