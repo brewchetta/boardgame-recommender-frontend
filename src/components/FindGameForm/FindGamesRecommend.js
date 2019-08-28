@@ -21,8 +21,9 @@ const FindGamesRecommend = ({input, setCurrentInput}) => {
   const renderFilteredBoardgameNames = () => {
     return boardgameNames
     .filter(n => {
-      const parsedN = n.toLowerCase().split(' ')
-      return checkForMatchingWords(parsedN) && n.toLowerCase() !== input.toLowerCase()})
+      const lowN = n.toLowerCase()
+      const parsedN = lowN.split(' ')
+      return (lowN.startsWith(input.toLowerCase()) || checkForMatchingWords(parsedN)) && lowN !== input.toLowerCase()})
     .map(n => (
       <button className='find-games-recommendation'
       key={n}
