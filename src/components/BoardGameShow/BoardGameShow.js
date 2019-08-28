@@ -17,7 +17,7 @@ const BoardGameShow = ({currentBoardgame}) => {
 
       <div id='boardgame-show-image-container'>
 
-        <img id='boardgame-show-image' src={currentBoardgame.image ? currentBoardgame.image : 'https://s3.amazonaws.com/walrus-assets/img/BoardGameTheory.jpg'} alt='' />
+        <img id='boardgame-show-image' src={currentBoardgame.image ? currentBoardgame.image : defaultGameBackground} alt='' />
 
       </div>
 

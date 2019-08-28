@@ -1,5 +1,6 @@
 import React from 'react'
 import BoardGameStars from './BoardGameStars'
+import {defaultGameBackground} from '../../constants'
 
 const BoardgameCard = ({boardgame, setCurrentBoardgame}) => {
 
@@ -10,7 +11,7 @@ const BoardgameCard = ({boardgame, setCurrentBoardgame}) => {
       <div className='board-game-card-background'
         style={boardgame.image ?
           {backgroundImage: `url('${boardgame.image}')`}
-          : {backgroundImage: `url('https://s3.amazonaws.com/walrus-assets/img/BoardGameTheory.jpg')`}}
+          : {backgroundImage: `url(${defaultGameBackground})`}}
       />
 
       <h3>{boardgame.name}</h3>

@@ -1,5 +1,7 @@
 body {
   margin: 0;
-  background-image: url('https://i2.wp.com/www.rudyardspub.com/wordpress/wp-content/uploads/2019/06/board-game-shelfie-state-of-the-blog-board-game-shelf-ideas.jpg?resize=1038%2C576');
+  background-image: url('https://wellingtongoclub.nz/images/ancient_go.jpg');
   background-size: 100vw;
+  background-repeat: no-repeat;
+  background-position: 0 2em;
 }

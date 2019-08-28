@@ -23,7 +23,9 @@ const FindGamesRecommend = ({input, setCurrentInput}) => {
     .filter(n => {
       const lowN = n.toLowerCase()
       const parsedN = lowN.split(' ')
-      return (lowN.startsWith(input.toLowerCase()) || checkForMatchingWords(parsedN)) && lowN !== input.toLowerCase()})
+      return (
+        lowN.startsWith(input.toLowerCase()) || checkForMatchingWords(parsedN)
+      )})
     .map(n => (
       <button className='find-games-recommendation'
       key={n}
