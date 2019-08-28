@@ -20,7 +20,7 @@ function App() {
   return (
     <div className="App">
 
-      <Navbar {...{setCurrentBoardgame}} />
+      <Navbar {...{setCurrentBoardgame, currentBoardgame}} />
 
       {!currentBoardgame ? (
         <>
