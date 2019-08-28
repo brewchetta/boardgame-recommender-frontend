@@ -1,4 +1,5 @@
 import React from 'react'
+import {defaultGameBackground} from '../../constants'
 import './style.css'
 
 const BoardGameShow = ({currentBoardgame}) => {
