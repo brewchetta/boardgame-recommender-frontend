@@ -21,9 +21,7 @@ const FindGamesForm = ({setBoardgames}) => {
       method: 'POST'
     })
     .then(res =>res.json())
-    .then(res => {
-      setBoardgames(res.games)
-    })
+    .then(res => setBoardgames(res.games))
   }
 
   const handleChange = event => {
