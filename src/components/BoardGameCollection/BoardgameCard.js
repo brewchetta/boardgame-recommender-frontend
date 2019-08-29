@@ -16,11 +16,13 @@ const BoardgameCard = ({boardgame, setCurrentBoardgame}) => {
 
       <h3>{boardgame.name}</h3>
 
-      {/* <p>{boardgame.avgrating.toFixed(1)} stars</p> */}
-
       <BoardGameStars rating={boardgame.avgrating.toFixed(1)} />
 
-      <p>{boardgame.categories.join(', ')} | {boardgame.mechanics.join(', ')}</p>
+      <br/>
+
+      <p>{boardgame.categories.join(', ')} {boardgame.categories.length && boardgame.mechanics.length ? '|' : null} {boardgame.mechanics.join(', ')}</p>
+
+      <br/>
 
       <p>Chosen based on: <br/>{boardgame.bestfeatures.join(', ')}</p>
     </div>
