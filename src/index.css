@@ -5,4 +5,5 @@ body {
   background-size: 100vw;
   background-repeat: no-repeat;
   background-position: 0 2em;
+  background-attachment: fixed;
 }

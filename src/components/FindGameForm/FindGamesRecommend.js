@@ -14,7 +14,7 @@ const FindGamesRecommend = ({input, setCurrentInput}) => {
   useEffect(() => {
     fetch(`${localEndpoint}/names`)
     .then(res => res.json())
-    .then(setBoardgameNames)
+    .then(res => setBoardgameNames(Array.from(new Set(res))))
   },[])
 
   // Fetch categories

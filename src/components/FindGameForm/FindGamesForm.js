@@ -30,11 +30,13 @@ const FindGamesForm = ({setBoardgames}) => {
 
   const fetchBoardGames = () => {
     const url = `${dbEndpoint}${mapInputsToURL()}`
-    console.log(url)
     fetch(url, {
       method: 'POST'
     })
-    .then(res =>res.json())
+    .then(res => {
+      // console.log(res)
+      return res.json()
+    })
     .then(res => setBoardgames(res.games))
   }
 
@@ -72,7 +74,7 @@ const FindGamesForm = ({setBoardgames}) => {
           value={inputThree.content}
           onChange={handleChange}
           onFocus={() => setCurrentField('inputThree')}/>
-        <input type='submit' value='Submit' />
+        <input type='submit' value='Submit' style={{cursor: 'pointer'}} />
       </form>
 
       <FindGamesRecommend input={currentContent} setCurrentInput={setCurrentInput}/>
