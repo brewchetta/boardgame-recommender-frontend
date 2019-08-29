@@ -34,7 +34,7 @@ const FindGamesForm = ({setBoardgames}) => {
       method: 'POST'
     })
     .then(res => {
-      // console.log(res)
+      console.log(res)
       return res.json()
     })
     .then(res => setBoardgames(res.games))
