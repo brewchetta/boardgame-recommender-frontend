@@ -11,12 +11,11 @@ const FindGamesForm = ({setBoardgames}) => {
 
   const currentContent = eval(currentField) ? eval(currentField).content : null
 
-  const mapInputToURL = (gameOrCateg) => {
-    return 'zonk'
+  const mapInputsToURL = () => {
+    const games = [inputOne, inputTwo, inputThree].filter(input => input.isGame && input.content.length).map(input => input.content).join(',')
+    const mechanics = [inputOne, inputTwo, inputThree].filter(input => !input.isGame).map(input => input.content).join(',')
+    return `?${games.length ? `games=${games}` : ''}${games.length && mechanics.length ? '&' : ''} ${mechanics.length ? `mechanics=${mechanics}` : ''}`
   }
-
-  // const url = `http://localhost:3000/boardgames?q=${input.inputOne}`
-  const url = `${dbEndpoint}?games=${mapInputToURL(true)}&mechanics=${mapInputToURL(false)}`
 
   const setCurrentInput = (newInput, isGame) => {
     eval('setI' + currentField.slice(1))({content: newInput, isGame})
@@ -24,6 +23,7 @@ const FindGamesForm = ({setBoardgames}) => {
   }
 
   const fetchBoardGames = () => {
+    const url = `${dbEndpoint}${mapInputsToURL()}`
     console.log(url)
     fetch(url, {
       method: 'POST'
@@ -33,7 +33,7 @@ const FindGamesForm = ({setBoardgames}) => {
   }
 
   const handleChange = event => {
-    eval('setI' + currentField.slice(1))({...eval(currentField), content: event.target.value})
+    eval('setI' + currentField.slice(1))({content: event.target.value, isGame: true})
   }
 
   const handleSubmit = event => {
@@ -50,24 +50,25 @@ const FindGamesForm = ({setBoardgames}) => {
 
       <form onSubmit={handleSubmit}>
         <input type='text'
+          style={inputOne.isGame ? {background: '#E7DFC3'} : {background: '#F9DDE1'}}
           name='inputOne'
           value={inputOne.content}
           onChange={handleChange}
           onFocus={() => setCurrentField('inputOne')}/>
         <input type='text'
+          style={inputTwo.isGame ? {background: '#E7DFC3'} : {background: '#F9DDE1'}}
           name='inputTwo'
           value={inputTwo.content}
           onChange={handleChange}
           onFocus={() => setCurrentField('inputTwo')}/>
         <input type='text'
+          style={inputThree.isGame ? {background: '#E7DFC3'} : {background: '#F9DDE1'}}
           name='inputThree'
           value={inputThree.content}
           onChange={handleChange}
           onFocus={() => setCurrentField('inputThree')}/>
         <input type='submit' value='Submit' />
       </form>
-
-      <p>{inputOne.isGame ? "1" : "0"}{inputTwo.isGame ? "1" : "0"}{inputThree.isGame ? "1" : "0"}</p>
 
       <FindGamesRecommend input={currentContent} setCurrentInput={setCurrentInput}/>
 
