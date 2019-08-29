@@ -19,9 +19,8 @@ const FindGamesForm = ({setBoardgames}) => {
   const url = `${dbEndpoint}?games=${mapInputToURL(true)}&mechanics=${mapInputToURL(false)}`
 
   const setCurrentInput = (newInput, isGame) => {
-    // setInput({...input, [`input${currentField}`]: newInput})
-    // setInputIsGame({...inputIsGame, [`input${currentField}`]: isGame})
-    // setCurrentField('')
+    eval('setI' + currentField.slice(1))({content: newInput, isGame})
+    setCurrentField('')
   }
 
   const fetchBoardGames = () => {
@@ -68,9 +67,7 @@ const FindGamesForm = ({setBoardgames}) => {
         <input type='submit' value='Submit' />
       </form>
 
-      <p>{inputOne.isGame ? "0" : "1"}{inputTwo.isGame ? "0" : "1"}{inputThree.isGame ? "0" : "1"}</p>
-
-    <p>{inputOne.content}{inputTwo.content}{inputThree.content}</p>
+      <p>{inputOne.isGame ? "1" : "0"}{inputTwo.isGame ? "1" : "0"}{inputThree.isGame ? "1" : "0"}</p>
 
       <FindGamesRecommend input={currentContent} setCurrentInput={setCurrentInput}/>
 
