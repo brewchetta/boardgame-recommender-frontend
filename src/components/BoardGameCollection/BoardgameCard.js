@@ -24,7 +24,7 @@ const BoardgameCard = ({boardgame, setCurrentBoardgame}) => {
 
       <br/>
 
-      <p>Chosen based on: <br/>{boardgame.bestfeatures.join(', ')}</p>
+      {boardgame.bestfeatures ? <p>Chosen based on: <br/>{boardgame.bestfeatures.map(bf => bf.replace("_", " ")).join(', ')}</p> : null}
     </div>
   )
 }
