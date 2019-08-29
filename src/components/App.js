@@ -15,8 +15,6 @@ function App() {
   const [boardgames, setBoardgames] = useState([])
   const [currentBoardgame, setCurrentBoardgame] = useState(null)
 
-  console.log(boardgames)
-
   return (
     <div className="App">
 

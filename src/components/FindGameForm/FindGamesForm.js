@@ -4,17 +4,24 @@ import {dbEndpoint} from '../../constants'
 import './style.css'
 
 const FindGamesForm = ({setBoardgames}) => {
-  const [input, setInput] = useState({inputOne: '', inputTwo: '', inputThree: ''})
-  const [inputIsGame, setInputIsGame] = useState({inputOne: true, inputTwo: true, inputThree: true})
+  const [inputOne, setInputOne] = useState({content: '', isGame: true})
+  const [inputTwo, setInputTwo] = useState({content: '', isGame: true})
+  const [inputThree, setInputThree] = useState({content: '', isGame: true})
   const [currentField, setCurrentField] = useState('')
 
+  const currentContent = eval(currentField) ? eval(currentField).content : null
+
+  const mapInputToURL = (gameOrCateg) => {
+    return 'zonk'
+  }
+
   // const url = `http://localhost:3000/boardgames?q=${input.inputOne}`
-  const url = `${dbEndpoint}?games=${input.inputOne},${input.inputTwo},${input.inputThree}`
+  const url = `${dbEndpoint}?games=${mapInputToURL(true)}&mechanics=${mapInputToURL(false)}`
 
   const setCurrentInput = (newInput, isGame) => {
-    setInput({...input, [`input${currentField}`]: newInput})
-    setInputIsGame({...inputIsGame, [`input${currentField}`]: isGame})
-    setCurrentField('')
+    // setInput({...input, [`input${currentField}`]: newInput})
+    // setInputIsGame({...inputIsGame, [`input${currentField}`]: isGame})
+    // setCurrentField('')
   }
 
   const fetchBoardGames = () => {
@@ -27,18 +34,14 @@ const FindGamesForm = ({setBoardgames}) => {
   }
 
   const handleChange = event => {
-    setInput({...input, [event.target.name]: event.target.value})
+    eval('setI' + currentField.slice(1))({...eval(currentField), content: event.target.value})
   }
 
   const handleSubmit = event => {
     event.preventDefault()
     setCurrentField('')
 
-    const {inputOne, inputTwo, inputThree} = input
-
-    if (inputOne && inputTwo && inputThree) {
-      fetchBoardGames()
-    }
+    if (inputOne && inputTwo && inputThree) fetchBoardGames()
   }
 
   // Autosuggests games similar to google lending search results
@@ -49,25 +52,27 @@ const FindGamesForm = ({setBoardgames}) => {
       <form onSubmit={handleSubmit}>
         <input type='text'
           name='inputOne'
-          value={input.inputOne}
+          value={inputOne.content}
           onChange={handleChange}
-          onFocus={() => setCurrentField('One')}/>
+          onFocus={() => setCurrentField('inputOne')}/>
         <input type='text'
           name='inputTwo'
-          value={input.inputTwo}
+          value={inputTwo.content}
           onChange={handleChange}
-          onFocus={() => setCurrentField('Two')}/>
+          onFocus={() => setCurrentField('inputTwo')}/>
         <input type='text'
           name='inputThree'
-          value={input.inputThree}
+          value={inputThree.content}
           onChange={handleChange}
-          onFocus={() => setCurrentField('Three')}/>
+          onFocus={() => setCurrentField('inputThree')}/>
         <input type='submit' value='Submit' />
       </form>
 
-      <p>{inputIsGame.inputOne ? "0" : "1"}{inputIsGame.inputTwo ? "0" : "1"}{inputIsGame.inputThree ? "0" : "1"}</p>
+      <p>{inputOne.isGame ? "0" : "1"}{inputTwo.isGame ? "0" : "1"}{inputThree.isGame ? "0" : "1"}</p>
 
-      <FindGamesRecommend input={input[`input${currentField}`]} setCurrentInput={setCurrentInput}/>
+    <p>{inputOne.content}{inputTwo.content}{inputThree.content}</p>
+
+      <FindGamesRecommend input={currentContent} setCurrentInput={setCurrentInput}/>
 
     </div>
   )
