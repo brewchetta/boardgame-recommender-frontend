@@ -42,15 +42,6 @@ const BoardGameShow = ({currentBoardgame}) => {
 
       <div className='board-game-show-column-2'>
 
-        {currentBoardgame.bestfeatures.length ?
-          (
-          <>
-            <p>Chosen based on: {currentBoardgame.bestfeatures.join(', ')}</p>
-            <div style={{border: 'solid black 1px', width: '90%', marginLeft: '5%'}} />
-          </>
-        ) : null}
-
-
         <p>{renderDescription(currentBoardgame.description)}</p>
 
       </div>
