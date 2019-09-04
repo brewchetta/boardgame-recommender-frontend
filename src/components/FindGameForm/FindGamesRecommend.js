@@ -1,28 +1,11 @@
-import React, {useEffect, useState} from 'react'
-import {localEndpoint} from '../../constants'
+import React from 'react'
+// import {localEndpoint} from '../../constants'
+import {boardgameNames} from '../../data/boardgame-names'
+import {categories} from '../../data/categories'
 
 const FindGamesRecommend = ({input, setCurrentInput}) => {
 
-  /* State */
-
-  const [boardgameNames, setBoardgameNames] = useState([])
-  const [categories, setCategories] = useState([])
-
   /* Utilities */
-
-  // Fetch game names
-  useEffect(() => {
-    fetch(`${localEndpoint}/names`)
-    .then(res => res.json())
-    .then(res => setBoardgameNames(Array.from(new Set(res))))
-  },[])
-
-  // Fetch categories
-  useEffect(() => {
-    fetch(`${localEndpoint}/categories`)
-    .then(res => res.json())
-    .then(setCategories)
-  },[])
 
   const checkForMatchingWords = (array) => {
     return array.reduce((acc, word) => {
